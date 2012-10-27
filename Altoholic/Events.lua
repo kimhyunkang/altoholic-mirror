@@ -497,9 +497,9 @@ function ns:BuildList()
 			-- Other timers (like mysterious egg, etc..)
 			num = DataStore:GetNumItemCooldowns(character) or 0
 			for i = 1, num do
-				local _, lastCheck, duration = DataStore:GetItemCooldownInfo(character, key)
+				local itemName, lastCheck, duration = DataStore:GetItemCooldownInfo(character, i)
 				local expires = duration + lastCheck + timeGap
-				AddEvent(TIMER_LINE, date("%Y-%m-%d",expires), date("%H:%M",expires), characterName, realm, k)
+				AddEvent(TIMER_LINE, date("%Y-%m-%d",expires), date("%H:%M",expires), characterName, realm, nil, i)
 			end
 		end
 	end
